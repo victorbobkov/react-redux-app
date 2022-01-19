@@ -5,6 +5,7 @@ import {
     taskDeleted,
     completeTask,
     loadTasks,
+    taskCreate,
     getTasks,
     getTasksLoadingStatus,
 } from "./store/task"
@@ -33,6 +34,10 @@ const App = (params) => {
         dispatch(taskDeleted(taskId))
     }
 
+    const createTask = () => {
+      dispatch(taskCreate())
+    }
+
     if (isLoading) {
         return <h1>Loading</h1>
     }
@@ -44,6 +49,9 @@ const App = (params) => {
     return (
         <>
             <h1> App</h1>
+            <button onClick={createTask}>
+              Create task
+            </button>
             <ul>
                 {state.map((el) => (
                     <li key={el.id}>
